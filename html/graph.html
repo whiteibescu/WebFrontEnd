@@ -26,6 +26,8 @@
     <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
     <link rel="stylesheet" type="text/css" href="../dist/components/sidebar.css">
     <link rel="stylesheet" type="text/css" href="../dist/components/transition.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/table.css">
+    <link rel="stylesheet" type="text/css" href="../dist/components/popup.css">
 
     <style type="text/css">
         .hidden.menu {
@@ -128,11 +130,13 @@
             }
         }
     </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="assets/library/jquery.min.js"></script>
     <script src="../dist/components/visibility.js"></script>
     <script src="../dist/components/sidebar.js"></script>
     <script src="../dist/components/transition.js"></script>
+    <script src="assets/library/iframe-content.js"></script>
+    <script type="text/javascript" src="../dist/components/popup.js"></script>
     <script>
         $(document)
             .ready(function () {
@@ -161,41 +165,122 @@
 </head>
 
 <body>
-    <h1>Curestream</h1>
+    <!--Upper Menu-->
+    <h2>Daily Graph</h2>
     <hr>
-    <!DOCTYPE html>
-    <html>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <div class="ui attached inverted menu">
+        <div class="ui container">
+            <a href="#" class="header item">
+                <img class="logo" src="assets/images/logo.png">
+                &nbsp; &nbsp; &nbsp;Name
+            </a>
+            <a href="homepage.html" class="item">Home</a>
+            <div class="ui simple dropdown item">
+                Dropdown <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="#">Link Item</a>
+                    <a class="item" href="#">Link Item</a>
+                    <div class="divider"></div>
+                    <div class="header">Header Item</div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        Sub Menu
+                        <div class="menu">
+                            <a class="item" href="#">Link Item</a>
+                            <a class="item" href="#">Link Item</a>
+                        </div>
+                    </div>
+                    <a class="item" href="#">Link Item</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Upper Menu-->
 
-    <body>
-        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-        <script>
-            var xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+    <!--
+        Two column grid
+    -->
+    <div class="ui two column grid">
+        <div class="column">
+            <!--Graph-->
+            <div class="ui segment">
+                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                <script>
+                    var xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 
-            new Chart("myChart", {
-                type: "line",
-                data: {
-                    labels: xValues,
-                    datasets: [{
-                        data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
-                        borderColor: "red",
-                        fill: false
-                    }, {
-                        data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
-                        borderColor: "green",
-                        fill: false
-                    }, {
-                        data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
-                        borderColor: "blue",
-                        fill: false
-                    }]
-                },
-                options: {
-                    legend: { display: false }
-                }
-            });
-        </script>
-    </body>
-
-    </html>
+                    new Chart("myChart", {
+                        type: "line",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+                                borderColor: "red",
+                                fill: false
+                            }, {
+                                data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+                                borderColor: "green",
+                                fill: false
+                            }, {
+                                data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+                                borderColor: "blue",
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            legend: { display: false }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui segment">
+                <!--Table-->
+                <div class="column">
+                    <table class="ui inverted black selectable celled center aligned table">
+                        <thead>
+                            <th class="left aligned"></th>
+                            <th>Calories</th>
+                            <th>Fat</th>
+                            <th>Protein</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="left aligned"></td>
+                                <td>23</td>
+                                <td>32g</td>
+                                <td>43g</td>
+                            </tr>
+                            <tr>
+                                <td class="left aligned">Joette</td>
+                                <td>21</td>
+                                <td>13g</td>
+                                <td>31g</td>
+                            </tr>
+                            <tr>
+                                <td class="left aligned">Le</td>
+                                <td>28</td>
+                                <td>39g</td>
+                                <td>23g</td>
+                            </tr>
+                            <tr>
+                                <td class="left aligned">Sacha</td>
+                                <td>46</td>
+                                <td>43g</td>
+                                <td>13g</td>
+                            </tr>
+                            <tr>
+                                <td class="left aligned">Bruna</td>
+                                <td>9</td>
+                                <td>47g</td>
+                                <td>12g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--End of Table-->
+            </div>
+        </div>
+</body>
+</html>
